@@ -1,0 +1,14 @@
+n=5
+
+ascii_value=64
+for i in range(n):
+    # printing spaces
+    for j in range(i):
+        print(' ', end=' ')
+    # printing alphabets
+    alphabet=chr(ascii_value+n)
+    ascii_value=ascii_value-1
+    for j in range(2 * (n - i - 1 ) + 1):
+        print(alphabet, end=' ')
+        
+    print()
