@@ -1,0 +1,59 @@
+# DataType Output: str
+x = "Hello World"
+print(" Type of x",type(x))
+
+# DataType Output: int
+x = 50
+print(" Type of x",type(x))
+
+# DataType Output: float
+x = 60.5
+print(" Type of x",type(x))
+
+# DataType Output: complex
+x = 3j
+print(" Type of x",type(x))
+
+# DataType Output: list
+x = ["geeks", "for", "geeks"]
+print(" Type of x",type(x))
+
+# DataType Output: tuple
+x = ("geeks", "for", "geeks")
+print(" Type of x",type(x))
+
+# DataType Output: range
+x = range(10)
+print(" Type of x",type(x))
+
+# DataType Output: dict
+x = {"name": "Suraj", "age": 24}
+print(" Type of x",type(x))
+
+# DataType Output: set
+x = {"geeks", "for", "geeks"}
+print(" Type of x",type(x))
+
+# DataType Output: frozenset
+x = frozenset({"geeks", "for", "geeks"})
+print(" Type of x",type(x))
+
+# DataType Output: bool
+x = True
+print(" Type of x",type(x))
+
+# DataType Output: bytes
+x = b"Geeks"
+print(" Type of x",type(x))
+
+# DataType Output: bytearray
+x = bytearray(4)
+print(" Type of x",type(x))
+
+# DataType Output: memoryview
+x = memoryview(bytes(6))
+print(" Type of x",type(x))
+
+# DataType Output: NoneType
+x = None
+print(" Type of x",type(x))
