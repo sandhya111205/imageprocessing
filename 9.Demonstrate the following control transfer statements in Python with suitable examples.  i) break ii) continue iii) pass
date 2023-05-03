@@ -1,0 +1,25 @@
+#pass
+# An empty loop
+for letter in 'sandhyalaxmi':
+    pass
+print('Last Letter :', letter)
+
+
+#break
+
+for letter in 'sandhyalaxmi':
+ 
+    # break the loop as soon it sees 'h'
+    # or 'y'
+    if letter == 'h' or letter == 'y':
+        break
+print('Current Letter :', letter)
+
+
+#continue
+
+# Prints all letters except 'h' and 'y'
+for letter in 'sandhyalaxmi':
+    if letter == 'h' or letter == 'y':
+        continue
+    print('Current Letter :', letter)
