@@ -1,0 +1,25 @@
+#print statement
+print('Good Morning!')
+print('It is rainy today')
+
+
+# print with end whitespace
+print('Good Morning!', end= ' ')
+
+print('It is rainy today')
+
+
+# print with sep
+print('New Year', 2023, 'See you soon!', sep= '. ')
+
+
+#output formating
+x = 5
+y = 10
+
+print('The value of x is {} and y is {}'.format(x,y))
+
+
+#input
+num=int(input("Enter a number:"))
+print("entered number is ",num)
