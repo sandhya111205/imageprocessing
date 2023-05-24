@@ -1,0 +1,29 @@
+# Importing OpenCV
+import cv2
+# Reading the image in grayscale mode by setting the flag as 0
+img = cv2.imread('C:/Users/User/Desktop/images/img5.jfif')
+#displaying the original image
+cv2.imshow('original', img)
+cv2.waitKey(0)
+
+ 
+# Use the cvtColor() function to grayscale the image
+rgb_img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+cv2.imshow('rgbimage',rgb_img)
+cv2.waitKey(0)
+ 
+# Use the cvtColor() function to grayscale the image
+gray_img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+cv2.imshow('grayimage',gray_img)
+cv2.waitKey(0)
+
+
+  
+# converting to its binary form
+bw = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+  
+cv2.imshow("Binary", bw_img)
+cv2.waitKey(0)
+
+
+cv2.destroyAllWindows()
