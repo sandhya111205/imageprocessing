@@ -1,0 +1,19 @@
+#import libraries from open cv
+import cv2
+
+#import plt
+from matplotlib import pyplot as plt
+
+#read image and convert to gray scale;flag=0
+img1=cv2.imread('D:\OIP.jfif',0)
+plt.imshow(img1)
+
+#plot the histogram in same figure 
+plt.figure(figsize=(9, 3))
+plt.subplot(131)
+
+# find frequency of pixels in range 0-255
+histr1 = cv2.calcHist([img1],[0],None,[256],[0,256])
+
+plt.plot(histr1)
+plt.show()
