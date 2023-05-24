@@ -17,3 +17,22 @@ histr1 = cv2.calcHist([img1],[0],None,[256],[0,256])
 
 plt.plot(histr1)
 plt.show()
+
+
+
+#histogram of colored images
+img=cv2.imread('D:\image_flip.jpg',cv2.COLOR_BGR2RGB)
+plt.imshow(img)
+
+plt.figure(figsize=(9, 3))
+plt.subplot(133)
+
+# Get RGB data from image
+blue_color = cv2.calcHist([img], [0], None, [256], [0, 256])
+red_color = cv2.calcHist([img], [1], None, [256], [0, 256])
+green_color = cv2.calcHist([img], [2], None, [256], [0, 256])
+
+plt.plot(blue_color,color='blue')
+plt.plot(green_color,color='green')
+plt.plot(red_color,color='red')
+
