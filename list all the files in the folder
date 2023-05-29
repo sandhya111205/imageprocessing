@@ -1,0 +1,42 @@
+#import os module
+import os
+path='C:/Users/User/Desktop/images'
+
+
+#Get all the folders in the directory
+dir_list=os.listdir(path)
+
+#print all the folder in the path
+
+print(" The list of folders in the path","'",path,"':",dir_list)
+
+
+
+#List out only jpg files in the folder
+dir='D:/'
+
+for file in os.listdir(dir):
+    if file.endswith("jpg"):
+        #print(file)
+        print(os.path.join(dir, file))
+
+
+
+#List out only media file
+dir='D:/abcd'
+
+for file in os.listdir(dir):
+    if file.endswith("mp3"):
+        print(os.path.join(dir, file))
+
+
+
+# Write a program to display all the images which is stored in a directory
+import os
+
+dir='D:/'
+
+for file in os.listdir(dir):
+    if file.endswith("jpg") or file.endswith("png"):
+        print(os.path.join(dir, file))
+
