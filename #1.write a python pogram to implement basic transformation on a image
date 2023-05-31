@@ -1,0 +1,109 @@
+#1.write a python pogram to implement basic transformation on a image 
+#Image Translation
+
+
+import numpy as np
+import cv2 
+img=cv2.imread('D:\image_sharpen.jpg',0)
+cv2.imshow('img',img)
+cv2.waitKey(0)
+
+
+rows,cols= img.shape
+M = np.float32([[1, 0, 100], [0, 1, 50]])
+dst = cv2.warpAffine(img, M, (cols, rows))
+cv2.imshow('translated img', dst)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+#Reflection 
+
+
+
+import numpy as np
+import cv2 
+img= cv2.imread('D:\girlimg.jpg', 0)
+cv2.imshow("original image",img)
+cv2.waitKey(0)
+rows, cols = img.shape
+M = np.float32([[1,  0, 0],
+                [0, -1, rows],
+                [0,  0, 1]])
+reflected_img = cv2.warpPerspective(img, M, (int(cols),int(rows)))
+cv2.imshow('reflected image', reflected_img)
+cv2.imwrite('reflection_out.jpg', reflected_img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#Rotation
+
+import numpy as np
+import cv2 as cv
+img = cv.imread('D:\girlimg.jpg', 0)
+cv2.imshow("original image",img)
+cv2.waitKey(0)
+rows, cols = img.shape
+
+angle=int(input("Enter the angle to rotate the image: "))
+rotationMatrix2D=cv.getRotationMatrix2D((cols/2, rows/2),angle, 0.6)
+#0.6 mans shrinking of image by 40%
+img_rotation = cv.warpAffine(img,rotationMatrix2D,(cols, rows))
+cv.imshow('img', img_rotation)
+cv.imwrite('rotation_out.jpg', img_rotation)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+#Scaling
+
+import numpy as np
+import cv2
+img = cv2.imread('D:\girlimg.jpg', 0)
+cv2.imshow("original img",img)
+cv2.waitKey(0)
+rows, cols = img.shape
+img_shrinked = cv2.resize(img, (250, 200), interpolation=cv2.INTER_AREA)
+cv2.imshow('shrinked img', img_shrinked)
+cv2.waitKey(0)
+img_enlarged = cv2.resize(img_shrinked, None,fx=1.5, fy=1.5,interpolation=cv.INTER_CUBIC)
+cv2.imshow('enlarged img', img_enlarged)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#Cropping
+import numpy as np
+import cv2
+img = cv.imread('D:\girlimg.jpg', 0)
+cv2.imshow("original img",img)
+cv2.waitKey(0)
+cropped_img = img[100:400, 100:400]
+cv.imshow('cropped_out.jpg', cropped_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+#Shearing in x-axis
+import numpy as np
+import cv2 as cv
+img = cv.imread('D:\girlimg.jpg', 0)
+cv2.imshow("original img",img)
+cv2.waitKey(0)
+
+rows, cols = img.shape
+M = np.float32([[1, 0.5, 0], [0, 1, 0], [0, 0, 1]])
+sheared_img = cv.warpPerspective(img, M, (int(cols*1.5), int(rows*1.5)))
+cv.imshow('img', sheared_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+#Shearing in y-axis
+import numpy as np
+import cv2 as cv
+img = cv.imread('D:\girlimg.jpg', 0)
+cv2.imshow("original img",img)
+cv2.waitKey(0)
+rows, cols = img.shape
+M = np.float32([[1, 0, 0], [0.5, 1, 0], [0, 0, 1]])
+sheared_img = cv.warpPerspective(img, M, (int(cols*1.5), int(rows*1.5)))
+cv.imshow('sheared_y-axis_out.jpg', sheared_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+
