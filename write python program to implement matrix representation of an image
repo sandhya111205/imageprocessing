@@ -1,0 +1,5 @@
+import cv2
+from numpy import array
+img=cv2.imread("D:\dHGcB.png")
+ar=array(img)
+ar
