@@ -1,0 +1,11 @@
+
+import cv2
+from PIL import Image 
+
+image=Image.open('C:/Users/User/Desktop/images/img3.jfif')
+image.show()
+print("size of old image",image.size)
+newsize=(300,300)
+image1=image.resize(newsize)
+image1.show()
+print("newsize of image",image1.size)
