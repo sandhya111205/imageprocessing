@@ -1,0 +1,16 @@
+#Import packages
+import cv2
+#Read image
+src = cv2.imread("D:\image_flip.jpg")
+cv2.imshow("original image",src)
+cv2.waitKey(0)
+#Convert to grayscale
+src = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
+cv2.imshow("grayscale image",src)
+cv2.waitKey(0)
+#Apply equalize histogram
+src_eqlzd = cv2.equalizeHist(src) #Performs Histogram Equalization
+#Show both images
+cv2.imshow("histogram",src_eqlzd)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
