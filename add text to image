@@ -1,0 +1,8 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+image=cv2.imread('D:/tshirt (1).jfif')
+plt.imshow(image)
+image1=cv2.putText(img=image, text='Hello!', org=(155, 200), fontFace=cv2.FONT_HERSHEY_SCRIPT_COMPLEX, fontScale=2, color=(100, 10, 10),thickness=3)
+plt.imshow(image1)
