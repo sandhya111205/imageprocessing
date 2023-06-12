@@ -1,0 +1,21 @@
+import cv2
+image=cv2.imread("D:/bus.png")
+cv2.imshow('original',image)
+cv2.waitKey(0)
+
+#flip horizontally
+flip_image1=cv2.flip(image,1)
+cv2.imshow('flip_image2',flip_image1)
+cv2.imwrite("D:/flip_image.png",flip_image1)
+cv2.waitKey(0)
+
+#flip vertically
+flip_image2=cv2.flip(image,0)
+cv2.imshow('flip_image2',flip_image2)
+cv2.waitKey(0)
+
+#flip horizontally and vertically
+flip_image3=cv2.flip(image,-1)
+cv2.imshow('flip_image3',flip_image3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
