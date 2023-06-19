@@ -1,0 +1,9 @@
+import cv2
+import glob
+path="D:/images/*.*"
+images=[cv2.imread(images) for images in
+glob.glob(path)]
+for i in range(len(images)):
+     cv2.imshow('images',images[i])
+     cv2.waitKey(0)
+     cv2.destroyAllWindows()
