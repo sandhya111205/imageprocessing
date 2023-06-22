@@ -1,0 +1,13 @@
+import os
+import matplotlib.pyplot as plt
+from matplotlib.image import imread
+import cv2
+img_dir="D:\python"
+all_files=os.listdir(img_dir)
+data_path = [os.path.join(img_dir + "/" + i) for i in all_files]
+k=0
+for i in data_path:
+    k=k+1
+    plt.subplot(3,2,k) 
+    plt.imshow(imread(i))
+plt.show()
