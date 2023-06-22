@@ -1,13 +1,16 @@
+#for reading 6 images 
+#to red 4 image use (2,2) in the subplot
 import os
 import matplotlib.pyplot as plt
 from matplotlib.image import imread
 import cv2
 img_dir="D:\python"
 all_files=os.listdir(img_dir)
-data_path = [os.path.join(img_dir + "/" + i) for i in all_files]
+data_path =[os.path.join(img_dir + "/" + i) for i in all_files]
 k=0
 for i in data_path:
     k=k+1
+    #3 rows and 2 columns 3*2=6
     plt.subplot(3,2,k) 
     plt.imshow(imread(i))
 plt.show()
