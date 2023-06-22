@@ -14,3 +14,15 @@ for i in data_path:
     plt.subplot(3,2,k) 
     plt.imshow(imread(i))
 plt.show()
+
+
+#displaying images using image library
+import os
+from PIL import Image
+path="D:/python/"
+dir_list=os.listdir(path)
+image_file_list=[file for file in dir_list if file.endswith(".jpg")]
+for image_file in image_file_list:
+    image_path=os.path.join(path+image_file)
+    image=Image.open(image_path)
+    image.show()
