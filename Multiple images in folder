@@ -7,3 +7,19 @@ for i in range(len(images)):
      cv2.imshow('images',images[i])
      cv2.waitKey(0)
      cv2.destroyAllWindows()
+
+
+
+
+
+import cv2
+import glob
+path="D:/python/*.*"
+images=[cv2.imread(images) for images in glob.glob(path)]
+k=0
+for i in range(len(images)):
+    k=k+1
+    #3 rows and 2 columns 3*2=6
+    plt.subplot(2,3,k) 
+    plt.imshow(images[i])
+plt.show()
