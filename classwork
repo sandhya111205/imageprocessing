@@ -1,0 +1,269 @@
+from PIL import Image as im
+import numpy as np
+
+array = np.zeros([100, 100], dtype=np.uint8)
+h, w = array.shape
+
+for i in range(h):
+    for j in range(w):
+        array[i][j] = 255
+
+print(array.shape)
+print(array)
+
+data = im.fromarray(array, mode='L')
+data.show()
+
+
+
+
+from PIL import Image as im
+import numpy as np
+
+array=np.zeros([100,100])
+h=len(array)
+w=len(array[0])
+for i in range(h):
+    for j in range(w):
+        array[i][j]=0
+        
+print(array.shape)
+print(array)
+data = im.fromarray(array, mode='L')
+data.show()
+        
+
+
+from PIL import Image as im
+import numpy as np
+
+array=np.zeros([255,255],dtype=np.uint8)
+h=len(array)
+w=len(array[0])
+for i in range(h):
+    for j in range(w):
+        array[i][j]=i
+        
+print(array.shape)
+print(array)
+data = im.fromarray(array, mode='L')
+data.show()
+        
+
+
+from PIL import Image as im
+import numpy as np
+
+array=np.zeros([255,255],dtype=np.uint8)
+h=len(array)
+
+w=len(array[0])
+
+for i in range(h):
+    for j in range(w):
+        array[i][j]=j
+        
+print(array.shape)
+print(array)
+
+data = im.fromarray(array, mode='L')
+data.show()
+        
+
+
+from PIL import Image as im
+import numpy as np
+
+a=0
+array=np.zeros([255,255],dtype=np.uint8)
+h=len(array[1])
+w=len(array[0])
+for i in range(h):
+    for j in range(w):
+        array[i][j]=a
+        a=a+1
+        
+print(array.shape)
+print(array)
+data = im.fromarray(array, mode='L')
+data.show()
+        
+        
+
+
+#gradient image
+from PIL import Image as im
+import numpy as np
+
+array=np.zeros([255,255],dtype=np.uint8)
+h=len(array)
+w=len(array[0])
+for i in range(h):
+    for j in range(w):
+        array[i][j]=j
+        array[j][i]=i
+
+        
+print(array.shape)
+print(array)
+data = im.fromarray(array, mode='L')
+data.show()
+
+#gradiet
+from PIL import Image
+import numpy as np
+import pandas
+
+a=np.zeros([250,250],dtype=np.uint8)
+img=Image.open("result.jpg")
+img1=img.convert('L')
+img1.show()
+array=np.array(img1)
+print(array)
+
+for i in range(200):
+    for j in range (200):
+        a[i][j]=array[i][j]
+print("a:\n",a)
+
+data = im.fromarray(a, mode='L')
+data.show()
+
+
+#enhancing image central
+from PIL import Image
+import numpy as np
+
+a=np.zeros([15,15,3])
+img=Image.open("result.jpg")
+img1=img.convert('L')
+img1.show()
+array=np.array(img1)
+print(array)
+
+for i in range(6,10):
+    for j in range (6,10):
+        a[i][j]=array[i][j]
+print("a:\n",a)
+
+data = im.fromarray(a, mode='L')
+data.show()
+
+
+
+
+#enhancing image only central pixel
+
+from PIL import Image
+import numpy as np
+
+a = np.zeros([15, 15], dtype=np.uint8)
+img = Image.open("D:/R.jfif")
+img1 = img.convert('L')
+img1.show()
+array = np.array(img)
+print(array)
+m = 1
+for i in range(6, 10):
+    for j in range(6, 10):
+        p = i - m
+        q = j - m
+        a[p][q] = array[i][j]
+print("a:\n", a)
+
+data = Image.fromarray(a, mode='L')
+data.show()
+data.save('modified_image.jpg')
+
+
+
+
+
+#intensity increasing
+from PIL import Image
+import numpy as np
+
+a = np.zeros([15, 15], dtype=np.uint8)
+h = len(a)
+w = len(a[0])
+img = Image.open("D:/R.jfif").convert('L')  # Convert to grayscale
+array = np.array(img)
+print(array)
+k = 20
+for i in range(h):
+    for j in range(w):
+        a[i][j] = np.clip(array[i][j] + k, 0, 255)  # Ensure values are within 0-255 range
+print("a:\n", a)
+data = Image.fromarray(a, mode='L')
+data.show()
+
+#negation
+from PIL import Image
+import numpy as np
+
+a = np.zeros([15, 15], dtype=np.uint8)
+h = len(a)
+w = len(a[0])
+img = Image.open("D:/R.jfif")
+img.show()
+array = np.array(img)
+print(array)
+
+for i in range(h):
+    for j in range(w):
+        array[i][j] = 255 - array[i][j]
+print("a:\n", array)
+data = Image.fromarray(array)
+data.show()
+
+
+# Python program to convert
+# numpy array to image
+
+# import required libraries
+import numpy as np
+from PIL import Image as im
+
+# define a main function
+def main():
+
+	# create a numpy array from scratch
+	# using arange function.
+	# 1024x720 = 737280 is the amount
+	# of pixels.
+	# np.uint8 is a data type containing
+	# numbers ranging from 0 to 255
+	# and no non-negative integers
+	array = np.arange(0, 737280, 1, np.uint8)
+	
+	# check type of array
+	print(type(array))
+	
+	# our array will be of width
+	# 737280 pixels That means it
+	# will be a long dark line
+	print(array.shape)
+	
+	# Reshape the array into a
+	# familiar resoluition
+	array = np.reshape(array, (1024, 720))
+	
+	# show the shape of the array
+	print(array.shape)
+
+	# show the array
+	print(array)
+	
+	# creating image object of
+	# above array
+	data = im.fromarray(array)
+	
+	# saving the final output
+	# as a PNG file
+	data.save('gfg_dummy_pic.png')
+
+# driver code
+if __name__ == "__main__":
+	main()
+
+
