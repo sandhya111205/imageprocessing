@@ -1,0 +1,108 @@
+#adding noise
+import cv2
+import numpy as np
+
+# Load the image
+image = cv2.imread("D:/R.jfif")
+cv2.imshow("original image",image)
+cv2.waitKey(0)
+
+
+def guassian_noise():
+    # Generate Gaussian noise
+    mean = 0
+    stddev = 50
+    noise = np.random.normal(mean, stddev, image.shape).astype(np.uint8)
+
+    # Add noise to the image
+    noisy_image = cv2.add(image, noise)
+    cv2.imshow(" Guassian Noisy Image", noisy_image)
+    cv2.waitKey(0)
+    
+    
+def salt_pepper_noise():
+    # Generate salt and pepper noise
+    noise_density = 0.02
+    salt_vs_pepper = 0.5
+    amount = int(noise_density * image.size)
+    num_salt = int(amount * salt_vs_pepper)
+    num_pepper = amount - num_salt
+
+    # Add salt noise
+    coords_salt = [np.random.randint(0, i - 1, int(num_salt)) for i in image.shape[:2]]
+    image[tuple(coords_salt)] = [255, 255, 255]
+
+    # Add pepper noise
+    coords_pepper = [np.random.randint(0, i - 1, int(num_pepper)) for i in image.shape[:2]]
+    image[tuple(coords_pepper)] = [0, 0, 0]
+
+    # Display the noisy image
+    cv2.imshow(" salt & pepper Noisy Image", image)
+    cv2.waitKey(0)
+   
+    
+def poison_noise():
+    # Generate Poisson noise
+    noise = np.random.poisson(image.astype(np.float32) / 255.0) * 255
+
+    # Add noise to the image
+    noisy_image = cv2.add(image, noise.astype(np.uint8))
+
+    # Display the noisy image
+    cv2.imshow("poison Noisy Image", noisy_image)
+    cv2.waitKey(0)
+    
+    
+guassian_noise()
+salt_pepper_noise()
+poison_noise()
+    
+
+
+#removing noise
+
+import cv2
+
+# Load the noisy image
+noisy_image = cv2.imread("D:/R.jfif")
+
+# Apply denoising filters
+denoised_image1 = cv2.fastNlMeansDenoisingColored(noisy_image, None, 10, 10, 7, 21)
+denoised_image2 = cv2.medianBlur(noisy_image, 5)
+denoised_image3 = cv2.GaussianBlur(noisy_image, (5, 5), 0)
+
+# Display the original and denoised images
+cv2.imshow("Original Image", noisy_image)
+cv2.waitKey(0)
+
+cv2.imshow("Denoised Image 1", denoised_image1)
+cv2.waitKey(0)
+
+cv2.imshow("Denoised Image 2", denoised_image2)
+cv2.waitKey(0)
+
+cv2.imshow("Denoised Image 3", denoised_image3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+...........................................................
+
+import cv2
+import matplotlib.pyplot as plt
+
+# Load the noisy image
+noisy_image = cv2.imread("D:/th.jfif")
+
+# Apply denoising filters
+denoised_image1 = cv2.fastNlMeansDenoisingColored(noisy_image, None, 10, 10, 7, 21)
+denoised_image2 = cv2.medianBlur(noisy_image, 5)
+denoised_image3 = cv2.GaussianBlur(noisy_image, (5, 5), 0)
+
+images=[noisy_image,denoised_image1,denoised_image2,denoised_image3]
+title=["original","denoised_image1","denoised_image2","denoised_image3"]
+for i in range (len(images)):
+    plt.subplot(2,2,i+1)
+    plt.imshow(images[i])
+    plt.title(title[i])
+    plt.axis(False)
+ 
+
