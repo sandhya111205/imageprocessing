@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+from skimage.io import imread,imshow
+
+#loading image
+image1=imread("result.jpg")
+imshow(image1)
+
+image2=imread("result.jpg",as_gray=True)
+imshow(image2)
+
+print(image1.shape)
+print(image2.shape)
+
+print(image1.size)
+print (image2.size)
+
+pixel_features1=np.reshape(image2,(481*500))
+pixel_features1.shape,pixel_features1
+
+pixel_features2=np.reshape(image1,(481*500*3))
+pixel_features2.shape,pixel_features2
+
+#calculating the variance
+from PIL import Image,ImageStat
+im=Image.open('result.jpg')
+stat=ImageStat.Stat(im)
+print(stat.var)
+
