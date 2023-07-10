@@ -1,0 +1,42 @@
+import cv2
+
+# Load the damaged image with noise
+image = cv2.imread("D:\image1.jfif")
+
+# Apply denoising filter (e.g., Non-local Means Denoising)
+denoised_image = cv2.fastNlMeansDenoisingColored(image, None, 10, 10, 7, 21)
+
+# Display the original and restored images
+cv2.imshow("Damaged Image", image)
+cv2.imshow("Restored Image", denoised_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# repair damaged images
+import cv2
+import matplotlib.pyplot as plt
+
+damaged_image_path = "D:/cat_damaged.png"
+damaged_image = cv2.imread(damaged_image_path)
+print(damaged_image.shape)
+
+mask_path = "D:/cat_mask.png"
+mask = cv2.imread(mask_path, 0)
+print(mask.shape)
+
+damaged_image = cv2.cvtColor(damaged_image, cv2.COLOR_BGR2RGB)
+
+output1 = cv2.inpaint(damaged_image, mask, 1, cv2.INPAINT_TELEA)
+output2 = cv2.inpaint(damaged_image, mask, 1, cv2.INPAINT_NS)
+
+img = [damaged_image, mask, output1, output2]
+titles = ['damaged image', 'mask', 'TELEA', 'NS']
+
+for i in range(4):
+    plt.subplot(2, 2, i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.title(titles[i])
+    plt.imshow(img[i])
+plt.show()
+
