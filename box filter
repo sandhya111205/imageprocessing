@@ -1,0 +1,18 @@
+import cv2
+
+# Load the image
+image = cv2.imread("D:/R.jfif")
+
+# Set the kernel size for the box filter
+kernel_size = (7, 7)
+
+# Apply the box filter
+filtered_image = cv2.boxFilter(image, -1, kernel_size)
+
+# Display the original and filtered images
+cv2.imshow("Original Image", image)
+cv2.waitKey(0)
+
+cv2.imshow("Filtered Image", filtered_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
