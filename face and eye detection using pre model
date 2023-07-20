@@ -1,0 +1,77 @@
+import cv2
+
+def detect_eyes(image_path):
+    # Load the pre-trained Haar Cascade for eye detection
+    eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+
+    # Read the input image
+    image = cv2.imread(image_path)
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # Detect eyes in the image
+    eyes = eye_cascade.detectMultiScale(gray_image, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30))
+
+    if len(eyes) > 0:
+        print("Eyes detected!")
+        for (x, y, w, h) in eyes:
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    else:
+        print("Eyes not detected.")
+
+    # Display the image with the detected eyes (if any)
+    cv2.imshow('Eye Detection', image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    image_path = "D:\man.jfif"  # Replace this with the path to your image
+    detect_eyes(image_path)
+
+...................................................................................
+import cv2
+
+def detect_face_and_eyes(image_path):
+    # Load pre-trained classifiers for face and eye detection
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+
+    # Read the input image
+    img = cv2.imread(image_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Detect faces in the image
+    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+
+    if len(faces) == 0:
+        print("No face detected in the image.")
+    
+    else:
+
+        for (x, y, w, h) in faces:
+            cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+            roi_gray = gray[y:y + h, x:x + w]
+            roi_color = img[y:y + h, x:x + w]
+
+            # Detect eyes in the face region
+            eyes = eye_cascade.detectMultiScale(roi_gray)
+            if len(eyes) == 0:
+                print("No eyes detected in the face.")
+            else:
+                for (ex, ey, ew, eh) in eyes:
+                    cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+                    
+
+    print("face and eyes are detected")
+    # Display the output image
+    cv2.imshow('Face and Eye Detection', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    # Replace 'your_image_path.jpg' with the path to your image
+        image_path = "D:\man.jfif"
+        detect_face_and_eyes(image_path)
+
+
+
+
