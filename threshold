@@ -1,0 +1,27 @@
+import cv2
+import matplotlib.pyplot as plt
+
+def show_image(image, title):
+    plt.imshow(image, cmap='gray')
+    plt.title(title)
+    plt.axis('off')
+    plt.show()
+
+# Load the image
+image = cv2.imread('D:\cat_damaged.png', 0)  # Read the image as grayscale
+
+# Apply different thresholding techniques
+ret, binary = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+ret, binary_inv = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY_INV)
+ret, trunc = cv2.threshold(image, 127, 255, cv2.THRESH_TRUNC)
+ret, to_zero = cv2.threshold(image, 127, 255, cv2.THRESH_TOZERO)
+ret, to_zero_inv = cv2.threshold(image, 127, 255, cv2.THRESH_TOZERO_INV)
+
+# Display the original and thresholded images
+show_image(image, 'Original Image')
+show_image(binary, 'Binary Thresholding')
+show_image(binary_inv, 'Inverse Binary Thresholding')
+show_image(trunc, 'Truncated Thresholding')
+show_image(to_zero, 'To Zero Thresholding')
+show_image(to_zero_inv, 'Inverse To Zero Thresholding')
+
