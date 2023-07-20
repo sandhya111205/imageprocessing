@@ -1,0 +1,13 @@
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread('D:/test.jpeg', cv2.IMREAD_GRAYSCALE)
+
+# Canny Edge Detection
+edge = cv2.Canny(img, 90, 150)
+
+fig, ax = plt.subplots(1, 2, figsize=(18, 6), dpi=150)
+ax[0].imshow(img, cmap='gray')
+ax[1].imshow(edge, cmap='gray')
+
+
