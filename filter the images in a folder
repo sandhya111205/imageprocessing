@@ -1,0 +1,17 @@
+import os
+from PIL import Image
+#Import all the enhancement filter from pillow
+from PIL.ImageFilter import (
+   BLUR, CONTOUR, DETAIL, EDGE_ENHANCE, EDGE_ENHANCE_MORE,
+   EMBOSS, FIND_EDGES, SMOOTH, SMOOTH_MORE, SHARPEN
+)
+path="D:/mydir"
+dir_list=os.listdir(path)
+image_file_list=[file for file in dir_list if file.endswith(".jpg")]
+for image_file in image_file_list:
+    image_path=os.path.join(path,image_file)
+    image=Image.open(image_path)
+    # Blur the image
+    img1 = image.filter(BLUR)
+    img1.show()
+
