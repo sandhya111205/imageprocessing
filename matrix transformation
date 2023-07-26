@@ -1,0 +1,34 @@
+# import required libraries
+import cv2
+import numpy as np
+
+# read input image
+img = cv2.imread('D:/R.jfif')
+cv2.imshow("original", img)
+cv2.waitKey(0)
+
+
+# define transformation matrix
+m = np.random.randn(3,3)
+
+# apply the cv2.transform to perform matrix transformation
+img_tr = cv2.transform(img, m, None)
+
+# display the transformed image 
+cv2.imshow("Transformed Image", img_tr)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+# define transformation matrix of only ones
+m = np.ones((3,3))
+
+# apply the cv2.transform to perform matrix transformation
+img_tr = cv2.transform(img, m, None)
+
+# display the transformed image 
+cv2.imshow("Transformed Image", img_tr)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
