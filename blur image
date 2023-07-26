@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
   
-image = cv2.imread('D:/chrome.jpg')
+image = cv2.imread('D:/R.jfif')
   
 cv2.imshow('Original Image', image)
 cv2.waitKey(0)
@@ -21,7 +21,13 @@ cv2.waitKey(0)
 bilateral = cv2.bilateralFilter(image, 9, 75, 75)
 cv2.imshow('Bilateral Blurring', bilateral)
 cv2.waitKey(0)
+
+#Mean blur/Average blur
+averageBlur = cv2.blur(image, (5, 5))
+cv2.imshow('Average blur', averageBlur)
+cv2.waitKey()
 cv2.destroyAllWindows()
+
 
 
 
